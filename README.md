@@ -22,3 +22,4 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+Notes: When dealing with the belongs_to, I added validation validates :menu, :presence => true instead of validating the menu_id because the item could be saved with ANY id. This way cares about the object existence
