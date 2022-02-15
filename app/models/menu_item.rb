@@ -8,9 +8,11 @@
 #  description :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
-#  menu_id     :integer
 #
 class MenuItem < ApplicationRecord
-    belongs_to :menu
-    validates :menu, :presence => true
+    has_many :menu_menu_items
+    has_many :menus, :through => :menu_menu_items
+
+    validates :name, :uniqueness => true
+
 end
