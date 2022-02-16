@@ -8,6 +8,8 @@
 #  description :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  type        :integer          not null
+#  order_id    :integer
 #
 require "test_helper"
 
