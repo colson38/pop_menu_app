@@ -10,7 +10,9 @@
 #
 class Order < ApplicationRecord
     has_many :order_items
-
+    belongs_to :user
+    validates_presence_of :user_id
+    
     def add_to_order(item, quantity, side_as_entree = false)
         type = item.item_type
         item_already_ordered = nil
