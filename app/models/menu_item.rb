@@ -9,7 +9,6 @@
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  item_type   :integer
-#  order_id    :integer
 #
 class MenuItem < ApplicationRecord
     has_many :menu_menu_items
