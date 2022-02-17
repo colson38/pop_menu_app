@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_02_16_234545) do
+ActiveRecord::Schema[7.0].define(version: 2022_02_17_034838) do
   create_table "menu_items", force: :cascade do |t|
-    t.decimal "price"
+    t.decimal "price", precision: 5, scale: 2
     t.string "name"
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "type", null: false
+    t.integer "item_type"
     t.integer "order_id"
   end
 

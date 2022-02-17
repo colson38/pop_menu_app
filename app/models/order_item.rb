@@ -12,8 +12,8 @@
 #  quantity     :integer
 #
 class OrderItem < ApplicationRecord
-    belongs_to :orders
-    belongs_to :menu_items
+    belongs_to :order
+    belongs_to :menu_item
 
     validates_presence_of :order_id, :menu_item_id, :price
 end
