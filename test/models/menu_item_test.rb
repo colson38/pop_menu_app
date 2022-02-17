@@ -3,11 +3,12 @@
 # Table name: menu_items
 #
 #  id          :integer          not null, primary key
-#  price       :decimal(, )
+#  price       :decimal(5, 2)
 #  name        :string
 #  description :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  item_type   :integer
 #
 require "test_helper"
 
@@ -51,7 +52,9 @@ class MenuItemTest < ActiveSupport::TestCase
   end
 
   test "menuitem has many menus" do
-    menu_item = MenuItem.create
+    menu_item = MenuItem.create! :name => "Filet Mignon",
+                                 :item_type => 1
+                                 
     menu1 = Menu.new :title => "Desert Menu"
 
     menu2 = Menu.new :title => "Cocktail Menu"
