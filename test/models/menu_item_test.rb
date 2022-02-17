@@ -43,8 +43,8 @@ class MenuItemTest < ActiveSupport::TestCase
   # end
 
   test "menuitem names should not be duplicated" do
-    item1 = MenuItem.new(name: "Crepes")
-    item2 = MenuItem.new(name: "Crepes")
+    item1 = MenuItem.new(name: "Crepes", item_type: 1)
+    item2 = MenuItem.new(name: "Crepes", item_type: 1)
 
     item1.save
 

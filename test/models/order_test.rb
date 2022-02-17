@@ -12,18 +12,24 @@ require "test_helper"
 
 class OrderTest < ActiveSupport::TestCase
   test "Add entree to order" do
-    order = Order.create
+    u = User.create!
+    u.orders.push(Order.create)
+    order = u.orders.first
+
     item1 = MenuItem.create! :name => "Chicken Fingers",
                         :price => 50.25,
                         :item_type => 1
 
-    order.add_to_order(item1, 1)
+    u.orders.first.add_to_order(item1, 1)
     
     assert_equal 1, order.order_items.count
   end
 
   test "Add appetizer to order" do
-    order = Order.create
+    u = User.create!
+    u.orders.push(Order.create)
+    order = u.orders.first
+
     item1 = MenuItem.create! :name => "Chicken Fingers",
                         :price => 50.25,
                         :item_type => 2
@@ -34,7 +40,10 @@ class OrderTest < ActiveSupport::TestCase
   end
 
   test "Add already ordered item to order" do
-    order = Order.create
+    u = User.create!
+    u.orders.push(Order.create)
+    order = u.orders.first
+    
     item1 = MenuItem.create! :name => "Chicken Fingers",
                         :price => 12.00,
                         :item_type => 1
@@ -46,7 +55,10 @@ class OrderTest < ActiveSupport::TestCase
   end
 
   test "Add side to order, make sure price is zero for salad" do
-    order = Order.create
+    u = User.create!
+    u.orders.push(Order.create)
+    order = u.orders.first
+
     item1 = MenuItem.create! :name => "Chicken Fingers",
                         :price => 12.00,
                         :item_type => 1
@@ -62,7 +74,9 @@ class OrderTest < ActiveSupport::TestCase
   end
 
   test "Add side to order with no entree, make sure price is not zero for salad" do
-    order = Order.create
+    u = User.create!
+    u.orders.push(Order.create)
+    order = u.orders.first
 
     item1 = MenuItem.create! :name => "Salad",
                         :price => 5.00,
@@ -74,7 +88,10 @@ class OrderTest < ActiveSupport::TestCase
   end
 
   test "Add standalone side to order with entrees, make sure price is not zero for salad" do
-    order = Order.create
+    u = User.create!
+    u.orders.push(Order.create)
+    order = u.orders.first
+
     item1 = MenuItem.create! :name => "Chicken Fingers",
                             :price => 12.00,
                             :item_type => 1
@@ -90,7 +107,10 @@ class OrderTest < ActiveSupport::TestCase
   end
 
   test "Order just a sauce" do
-    order = Order.create
+    u = User.create!
+    u.orders.push(Order.create)
+    order = u.orders.first
+
     item1 = MenuItem.create! :name => "Chick-fil-A Sauce",
                             :price => 0,
                             :item_type => 4
@@ -99,7 +119,10 @@ class OrderTest < ActiveSupport::TestCase
   end
 
   test "Order more sauces than entrees" do
-    order = Order.create
+    u = User.create!
+    u.orders.push(Order.create)
+    order = u.orders.first
+    
     item1 = MenuItem.create! :name => "Burger",
                         :price => 15.00,
                         :item_type => 1

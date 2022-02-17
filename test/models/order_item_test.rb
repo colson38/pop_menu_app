@@ -22,7 +22,9 @@ class OrderItemTest < ActiveSupport::TestCase
   end
 
   test "Check validation if no menu_item" do
-    order = Order.create
+    u = User.create!
+    u.orders.push(Order.create)
+    order = u.orders.first
     
     assert !order.order_items.create(:name => "Hotdog", :price => 30.00, :quantity => 1).valid?
   end
